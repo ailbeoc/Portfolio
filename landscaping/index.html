@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Verdant Landscapes</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f5f5f2;
+      color: #333;
+      scroll-behavior: smooth;
+    }
+
+    section {
+      padding: 4rem 2rem;
+    }
+
+    .fullscreen {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    /* Navbar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      z-index: 1000;
+      background-color: #fff;
+    }
+
+    /* Default transparent nav */
+  
+
+
+    .logo img {
+      height: 40px;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+
+    nav ul li a{
+      transition: color 0.5s ease;
+    }
+
+    nav ul li a:hover {
+  color: #7a9e7e; /* Match the button color */
+}
+
+  nav ul li a {
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+nav ul li a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: #7a9e7e;
+  transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after {
+  width: 100%;
+}
+
+
+    .menu-toggle {
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background: white;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        padding: 1rem 2rem;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+      background-image: url("ChatGPT\ Image\ Jun\ 7\,\ 2025\,\ 10_45_04\ PM.png");
+      background-size: cover;
+    }
+
+    .hero video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .overlay {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: white;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .overlay h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .overlay .cta {
+      background: #7a9e7e;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+    /* Portfolio */
+.portfolio h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.gallery img {
+  width: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+  height: 100%;
+  transition: transform 0.3s ease;
+}
+
+.gallery img:hover {
+  transform: scale(1.03);
+}
+
+/* Contact */
+.contact h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size:2rem;
+}
+
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.contact-form button {
+  padding: 1rem;
+  background: #7a9e7e;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.contact-form button:hover {
+  background: #688967;
+}
+
+
+    /* Services Section */
+    .services h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2.5rem;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .card {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card i {
+      color: #7a9e7e;
+      margin-bottom: 1rem;
+    }
+
+    .card h3 {
+      margin-top: 0.5rem;
+      font-size: 1.25rem;
+    }
+
+    .card p {
+      color: #555;
+      font-size: 0.95rem;
+      margin-top: 0.5rem;
+    }
+
+    /* Testimonials */
+    .testimonials h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2.5rem;
+    }
+
+    .testimonial {
+      opacity: 0;
+      transition: opacity 1s ease;
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
+      font-style: italic;
+      font-size: 1.1rem;
+    }
+
+    .testimonial.active {
+      opacity: 1;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      background: #e8eae3;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+      <img src="ChatGPT Image Jun 8, 2025, 02_09_09 PM.PNG" alt="Verdant Landscapes">
+    </div>
+    <div class="menu-toggle" id="menu-toggle">
+      <i class="fas fa-bars"></i>
+    </div>
+    <ul class="nav-links" id="nav-list">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#testimonials">Testimonials</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <video autoplay muted loop playsinline>
+      <source src="assets/intro.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="overlay">
+      <h1>Crafting Timeless Outdoor Spaces</h1>
+      <a href="#contact" class="cta">Request a Consultation</a>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="services fullscreen" id="services">
+    <h2>Our Expertise</h2>
+    <div class="card-grid">
+      <div class="card">
+        <i class="fas fa-seedling fa-2x"></i>
+        <h3>Bespoke Garden Design</h3>
+        <p>Tailored outdoor spaces that reflect your style and harmonize with nature.</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-hard-hat fa-2x"></i>
+        <h3>Hardscaping</h3>
+        <p>Elegant stone, wood, and concrete features for durable and stunning landscapes.</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-leaf fa-2x"></i>
+        <h3>Planting Schemes</h3>
+        <p>Expertly selected flora for seasonal interest, texture, and sustainability.</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-calendar-check fa-2x"></i>
+        <h3>Seasonal Maintenance</h3>
+        <p>Keep your landscape pristine year-round with professional upkeep.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="portfolio fullscreen" id="portfolio">
+  <h2>Selected Works</h2>
+  <div class="gallery">
+    <img src="portfolio3.png" alt="Project 1">
+    <img src="portfolio2.png" alt="Project 2">
+    <img src="portfolio4.png" alt="Project 3">
+    <img src="portfolio1.png" alt="Project 4">
+  </div>
+  </section>
+
+
+  <!-- Testimonials -->
+  <section class="testimonials fullscreen" id="testimonials">
+    <h2>What Clients Say</h2>
+    <div class="testimonial active">“Verdant Landscapes turned our garden into a serene sanctuary — their work is truly transformative.”</div>
+    <div class="testimonial">“Every detail was handled with care and creativity. They exceeded our expectations in every way.”</div>
+    <div class="testimonial">“From design to execution, the team was professional, respectful, and visionary. Highly recommended.”</div>
+  </section>
+
+  <section class="contact fullscreen" id="contact">
+  <h2>Let’s Discuss Your Vision</h2>
+  <form class="contact-form">
+    <input type="text" placeholder="Full Name" required>
+    <input type="email" placeholder="Email Address" required>
+    <textarea rows="5" placeholder="Tell us about your project..." required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+  </section>
+
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 Verdant Landscapes · Dublin, Ireland
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // Simple carousel functionality
+    let currentTestimonial = 0;
+    const testimonials = document.querySelectorAll('.testimonial');
+
+    function showTestimonial(index) {
+      testimonials.forEach((el, i) => {
+        el.classList.toggle('active', i === index);
+      });
+    }
+
+    function nextTestimonial() {
+      currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+      showTestimonial(currentTestimonial);
+    }
+
+    setInterval(nextTestimonial, 5000); // Change every 5 seconds
+
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Responsive menu toggle
+    const toggle = document.getElementById('menu-toggle');
+    const navList = document.getElementById('nav-list');
+    toggle.addEventListener('click', () => {
+      navList.classList.toggle('active');
+    });
+
+    
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 50) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  });
+
+
+  </script>
+</body>
+</html>
